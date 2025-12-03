@@ -29,15 +29,15 @@ export default function Dashboard() {
     //     </div>
     //   </div>
     // </nav>
-    <div>
+    <div >
     {/* <Navbar/> */}
     
-    <div className='grid grid-cols-2 space-x-5 space-y-5 bg-[#020028] absolute h-auto w-auto top-36 left-1/6 right-0 border-2 border-l-[#1a656d] pl-15 pr-10 pt-10 pb-22'>
-        <div className='items-center bg-[#000005] border-2 border-[#9B9476] rounded-lg p-3'>
-              <h1 className='text-xl text-gray-400'>Game Performance</h1>      
-              <p className='text-sm text-gray-400'>Comparision between infinity and time game</p>      
+    <div className='grid grid-cols-2 flx-1 overflow-auto absolute sm:space-x-2 md:space-x-2 lg:space-x-3 xl:space-x-5 2xl:space-x-7 sm:space-y-3 md:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-7 bg-[#020028] w-auto sm:top-27 md:top-27 lg:top-31 xl:top-36 2xl:top-39 sm:left-30 md:left-40  lg:left-50 xl:left-64 right-0 border-2 border-l-[#1a656d] sm:pl-8 sm:pr-5 sm:pt-4 md:pl-9 md:pr-6 md:pt-4 xl:pl-15 xl:pr-10 xl:pt-7 2xl:pl-18 2xl:pr-12 2xl:pt-8'>
+        <div className='sm:h-35 sm:w-82 md:h-42 md:w-99 lg:h-56 lg:w-132 xl:h-70 xl:w-165 2xl:h-84 2xl:w-198 items-center bg-[#000005] border-2 border-[#9B9476] rounded-lg sm:p-1.5 sm:pb-3 md:p-2 md:pb-3.5 lg:p-2.5 lg:pb-5 xl:p-3 xl:pb-6 2xl:p-3.5 2xl:pb-7'>
+              <h1 className='sm:text-sm md:text-sm lg:text-lg xl:text-xl 2xl:text-2xl text-gray-400'>Game Performance</h1>      
+              <p className='sm:text-xs md:text-xs lg-text-sm xl:text-sm text-gray-400'>Comparision between infinity and time game</p>      
              <LineChart
-                style={{ width: '100%', aspectRatio: 1.618, maxWidth: 600 }}
+                style={{ width: '100%', aspectRatio: 1.618, maxWidth: 600, maxHeight: '100%' }}
                 responsive
                 data={data}
                 margin={{
@@ -48,75 +48,76 @@ export default function Dashboard() {
                 }}
                 >
                 <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />
-                <Line type="monotone" dataKey="users" stroke="purple" strokeWidth={2} name="Game Performance" />
-                <Line type="monotone" dataKey="user2" stroke="blue" strokeWidth={2} name="Game Performance" />
+                <Line type="monotone" dataKey="users" stroke="purple" strokeWidth={2}/>
+                <Line type="monotone" dataKey="user2" stroke="blue" strokeWidth={2}/>
                 <XAxis dataKey="name" />
                 <YAxis width="auto" label={{ value: 'users', position: 'insideLeft', angle: -90 }} />
                 <Legend align="right" />
                 <Tooltip />
             </LineChart>
         </div>
-        <div className='items-center bg-[#000005] border-2 border-[#9B9476] rounded-lg pt-5 p-3'>
-            <h1 className='text-xl text-gray-400'>Revenue Growth</h1>      
-            <p className='text-sm text-gray-400'>Monthly revenue for past 6 months</p>   
+        <div className='sm:h-35 sm:w-60 sm:ml-12 sm:pt-2.5 sm:p-1.5 sm:pb-5 md:h-42 md:w-72 md:ml-15 md:pt-3 md:p-2 md:pb-6 lg:h-56 lg:w-95 lg:ml-20 lg:pt-4 lg:p-2.5 lg:pb-8 xl:h-70 xl:w-119 xl:ml-25 xl:pt-5 xl:p-3 xl:pb-10 2xl:h-84 2xl:w-143 2xl:ml-30 2xl:pt-6 2xl:p-3.5 2xl:pb-12 items-center bg-[#000005] border-2 border-[#9B9476] rounded-lg'>
+            <h1 className='sm:text-sm md:text-sm lg:text-lg xl:text-xl 2xl:text-2xl text-gray-400'>Revenue Growth</h1>      
+            <p className='sm:text-xs md:text-xs lg-text-sm xl:text-sm text-gray-400'>Monthly revenue for past 6 months</p>   
             <BarChart
-            style={{ width: '100%', maxWidth: '400px', maxHeight: '100px', aspectRatio: 1.618,  maxHeight: 500 }}
+            style={{  width: '100%', aspectRatio: 1.618, maxWidth: 500, maxHeight: '100%' }}
             responsive
             data={data}
+            className='sm:h-35 sm:w-60 md:h-42 md:w-72 lg:h-56 lg:w-95 xl:h-70 xl:w-119'
             >
             <XAxis dataKey='name'/>
             <YAxis dataKey='users'/>
             <Bar dataKey="users" fill="#8884d8" />
             </BarChart>
         </div>
-        <div className='items-center  bg-[#000005] border-2 border-[#9B9476] rounded-lg p-3'>
-            <h1 className='text-lg justify-center items-center text-white mb-2'>Top Selling Items</h1>
-            <h3 className='text-sm justify-center items-center text-white'>Most popular items by sales</h3>
-            <div className='items-center bg-[#020028] border-2 border-[#9B9476] rounded-lg p-3 mt-2'>
-                <table className='text-sm text-gray-400 px-3'>
+        <div className='items-center sm:h-32 md:h-40 lg:h-52 xl:h-65 2xl:h-78 bg-[#000005] border-2 border-[#9B9476] rounded-lg sm:p-1 md:p-1 lg:p-2 xl:p-2 2xl:p-3'>
+            <h1 className='sm:text-sm md:text-sm lg:text-lg xl:text-xl 2xl:text-2xl justify-center items-center text-white mb-2'>Top Selling Items</h1>
+            <h3 className='sm:text-xs md:text-xs lg-text-sm xl:text-sm justify-center items-center text-white'>Most popular items by sales</h3>
+            <div className='items-center h-auto bg-[#020028] border-2 border-[#9B9476] rounded-lg mt-2'>
+                <table className='text-sm text-gray-400 px-2'>
                     <thead className='justify-between'>
                         <tr>
-                            <th className="px-4 py-2">Item Name</th>
-                            <th className="px-4 py-2">Type</th>
-                            <th className="px-4 py-2">Price</th>
-                            <th className="px-4 py-2">Units Sold</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Item Name</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Type</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Price</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Units Sold</th>
                             </tr>
                     </thead>
 
                     <tbody>
                         {gameItems.map((item) => (
                         <tr key={item.id} className="border-gray-600 hover:bg-gray-700">
-                        <td className="px-4 py-2 text-center">{item.itemName}</td>
-                        <td className="px-4 py-2 text-center">{item.type}</td>
-                        <td className="px-4 py-2 text-center">{item.price}</td>
-                        <td className="px-4 py-2 text-center">{item.unitsSold}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.itemName}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.type}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.price}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.unitsSold}</td>
                     </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
         </div>
-        <div className='items-center  bg-[#000005] border-2 border-[#9B9476] rounded-lg p-3'>
-            <h1 className='text-lg justify-center items-center text-white mb-2'>Top Selling Items</h1>
-            <h3 className='text-sm justify-center items-center text-white'>Most popular items by sales</h3>
-            <div className='items-center bg-[#020028] border-2 border-[#9B9476] rounded-lg p-3 mt-2'>
-                <table className='text-sm text-gray-400 px-3'>
+        <div className='items-center sm:h-32 md:h-40 lg:h-52 xl:h-65 2xl:h-78 bg-[#000005] border-2 border-[#9B9476] rounded-lg sm:p-1 md:p-1 lg:p-2 xl:p-2 2xl:p-3'>
+            <h1 className='sm:text-sm md:text-sm lg:text-lg xl:text-xl 2xl:text-2xl justify-center items-center text-white mb-2'>Top Selling Items</h1>
+            <h3 className='sm:text-xs md:text-xs lg-text-sm xl:text-sm justify-center items-center text-white'>Most popular items by sales</h3>
+            <div className='items-center h-auto bg-[#020028] border-2 border-[#9B9476] rounded-lg mt-2'>
+                <table className='text-sm text-gray-400 px-2'>
                     <thead className='justify-between'>
                         <tr>
-                            <th className="px-4 py-2">Item Name</th>
-                            <th className="px-4 py-2">Type</th>
-                            <th className="px-4 py-2">Price</th>
-                            <th className="px-4 py-2">Units Sold</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Item Name</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Type</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Price</th>
+                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Units Sold</th>
                             </tr>
                     </thead>
 
                     <tbody>
                         {gameItems.map((item) => (
                         <tr key={item.id} className="border-gray-600 hover:bg-gray-700">
-                        <td className="px-4 py-2 text-center">{item.itemName}</td>
-                        <td className="px-4 py-2 text-center">{item.type}</td>
-                        <td className="px-4 py-2 text-center">{item.price}</td>
-                        <td className="px-4 py-2 text-center">{item.unitsSold}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.itemName}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.type}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.price}</td>
+                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.unitsSold}</td>
                     </tr>
                         ))}
                     </tbody>

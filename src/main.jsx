@@ -7,12 +7,14 @@ import Layout from './layout/Layout.jsx';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar.jsx';
 import Users from './pages/Users.jsx';
+import ViewUsers from './pages/ViewUsers.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
         <Route path='' element={<Dashboard/>}/>
         <Route path='users' element={<Users/>}/>
+        <Route path="users/viewusers" element={<ViewUsers/>}/>
     </Route>
   )
 )

@@ -34,41 +34,6 @@ const gameItems = [
     price: 180,
     unitsSold: 90,
   },
-  {
-    id: 6,
-    itemName: "Mana Elixir",
-    type: "Consumable",
-    price: 30,
-    unitsSold: 400,
-  },
-  {
-    id: 7,
-    itemName: "Wizard Hat",
-    type: "Armor",
-    price: 100,
-    unitsSold: 150,
-  },
-  {
-    id: 8,
-    itemName: "Fire Bomb",
-    type: "Consumable",
-    price: 50,
-    unitsSold: 320,
-  },
-  {
-    id: 9,
-    itemName: "Ice Dagger",
-    type: "Weapon",
-    price: 120,
-    unitsSold: 110,
-  },
-  {
-    id: 10,
-    itemName: "Cloak of Invisibility",
-    type: "Armor",
-    price: 250,
-    unitsSold: 60,
-  },
 ];
 
 export default gameItems;
