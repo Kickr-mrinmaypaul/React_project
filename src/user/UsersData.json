@@ -1,0 +1,16 @@
+{
+  "tableName": "Users Table",
+  "columns": [
+    { "header": "S.No", "accessor": "index" },
+    { "header": "USER-ID", "accessor": "userId" },
+    { "header": "Username", "accessor": "username" },
+    { "header": "Account Type", "accessor": "accountType" },
+    { "header": "Login Details", "accessor": "loginDetails" },
+    { "header": "Coin Balance", "accessor": "coinBalance" },
+    { "header": "Actions", "accessor": "actions" }
+  ],
+  "data": [
+    { "id": 1, "userId": "U001", "username": "Alice", "accountType": "Premium", "loginDetails": "2025-12-01 10:15", "coinBalance": 1200 },
+    { "id": 2, "userId": "U002", "username": "Bob", "accountType": "Free", "loginDetails": "2025-12-02 08:30", "coinBalance": 450 }
+  ]
+}

@@ -1,0 +1,68 @@
+const gameHistory = [
+  {
+    sNo: 1,
+    gameMode: "Classic",
+    playTime: "12m 45s",
+    score: 1800,
+    coin: 120,
+    dateTime: "2025-02-15 14:32",
+    points: 45,
+  },
+  {
+    sNo: 2,
+    gameMode: "Time Attack",
+    playTime: "08m 10s",
+    score: 1420,
+    coin: 90,
+    dateTime: "2025-02-14 18:27",
+    points: 38,
+  },
+  {
+    sNo: 3,
+    gameMode: "Survival",
+    playTime: "22m 02s",
+    score: 2600,
+    coin: 200,
+    dateTime: "2025-02-13 10:18",
+    points: 72,
+  },
+  {
+    sNo: 4,
+    gameMode: "Arcade",
+    playTime: "15m 33s",
+    score: 1950,
+    coin: 130,
+    dateTime: "2025-02-12 09:42",
+    points: 50,
+  },
+  {
+    sNo: 5,
+    gameMode: "Speed Run",
+    playTime: "05m 55s",
+    score: 980,
+    coin: 70,
+    dateTime: "2025-02-11 16:05",
+    points: 28,
+  },
+  {
+    sNo: 6,
+    gameMode: "Multiplayer",
+    playTime: "18m 20s",
+    score: 2200,
+    coin: 150,
+    dateTime: "2025-02-10 11:30",
+    points: 60,
+  },
+  {
+    sNo: 7,
+    gameMode: "Hardcore",
+    playTime: "25m 40s",
+    score: 3100,
+    coin: 250,
+    dateTime: "2025-02-09 20:44",
+    points: 88,
+  },
+];
+
+
+export default gameHistory;

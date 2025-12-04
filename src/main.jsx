@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar.jsx';
 import Users from './pages/Users.jsx';
 import ViewUsers from './pages/ViewUsers.jsx';
+import Admin from './pages/Admin.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
         <Route path='' element={<Dashboard/>}/>
         <Route path='users' element={<Users/>}/>
         <Route path="users/viewusers" element={<ViewUsers/>}/>
+        <Route path='admin' element={<Admin/>}/>
     </Route>
   )
 )

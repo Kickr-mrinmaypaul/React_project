@@ -1,13 +1,31 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Search, FunnelPlus, EllipsisVertical  } from 'lucide-react'
 import users from '../user/users'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
+import UsersTable from '../components/TableTemplate/TableFormat'
+import UsersData from '../user/UsersData.json'
 
 
 export default function Users() {
+    const [isBlocked, setIsBlocked] = useState({});
+
+    const handleBlock = (id) =>{
+        setIsBlocked((prev)=>({
+            ...prev,[id]: true,
+        }));
+    }
+
+    const handleUnblock = (id) =>{
+        setIsBlocked((prev)=>({
+            ...prev, [id]: false,
+        }))
+    }
+    const highlightedClasses = " text-sm text-black bg-red-200 px-3";
+    const defaultClasses = "text-sm text-amber-50 px-3"
+
   return (
     <div className='bg-[#020028] flx-1 overflow-auto absolute h-screen w-auto sm:top-27 md:top-27 lg:top-31 xl:top-36 2xl:top-39 sm:left-30 md:left-40  lg:left-50 xl:left-64 right-0 border-2 border-l-[#1a656d]  sm:pl-8 sm:pr-5 sm:pt-4 md:pl-9 md:pr-6 md:pt-4 xl:pl-15 xl:pr-10 xl:pt-7 2xl:pl-18 2xl:pr-12 2xl:pt-8'>
         <div className='bg-[#000005] border-2 border-[#9B9476] rounded-2xl h-auto sm:p-2 md:p-2 lg:p-2.5 xl:p-3 2xl:p-4'>
@@ -34,15 +52,23 @@ export default function Users() {
                         to="#"
                         className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
                         >
-                        Active
+                        All
                         </Link>
                         </MenuItem>
                         <MenuItem>
-                     <Link
-                        to="#"
-                        className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
+                        <Link
+                            to="#"
+                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
                         >
-                        Inactive
+                            Infinity
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link
+                            to="#"
+                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
+                        >
+                            Time
                         </Link>
                     </MenuItem>
                 </div>
@@ -64,7 +90,7 @@ export default function Users() {
                     </thead>
                     <tbody>
                         {users.map((users, index)=>(
-                        <tr key={users.id} className="border-gray-600 hover:bg-gray-700">
+                        <tr key={users.id} className={`border-gray-600 hover:bg-gray-700 ${isBlocked[users.id] ? highlightedClasses : defaultClasses}` }>
                             <td className="sm:px-3 sm:py-0.5 md:px-4 md:py-1 lg:px-7 lg:py-1 xl:px-11 xl:py-1 2xl:px-13 2xl:py-1.5 text-center sm:text-xs md:text-xs lg:text-sm xl:text-sm 2xl:text-2xl">{index + 1}</td>
                             <td className="sm:px-3 sm:py-0.5 md:px-4 md:py-1 lg:px-7 lg:py-1 xl:px-11 xl:py-1 2xl:px-13 2xl:py-1.5 text-center sm:text-xs md:text-xs lg:text-sm xl:text-sm 2xl:text-2xl">{users.userId}</td>
                             <td className="sm:px-3 sm:py-0.5 md:px-4 md:py-1 lg:px-7 lg:py-1 xl:px-11 xl:py-1 2xl:px-13 2xl:py-1.5 text-center sm:text-xs md:text-xs lg:text-sm xl:text-sm 2xl:text-2xl">{users.username}</td>
@@ -84,25 +110,27 @@ export default function Users() {
                                 >
                                     <div className="py-1">
                                     <MenuItem>
-                                    <Link
+                                    <button
+                                        onClick={()=>handleBlock(users.id)}
                                         to="#"
-                                        className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
+                                        className="block px-4 py-2 text-sm cursor-pointer text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
                                     >
                                         Block
-                                    </Link>
+                                    </button>
                                 </MenuItem>
                                 <MenuItem>
-                                    <Link
+                                    <button
+                                        onClick={()=>handleUnblock(users.id)}
                                         to="#"
-                                        className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
+                                        className="block px-4 py-2 text-sm cursor-pointer text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
                                     >
                                         Unblock
-                                    </Link>
+                                    </button>
                                 </MenuItem>
                                 <MenuItem>
                                     <Link
                                         to="/users/viewusers"
-                                        className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
+                                        className="flex justify-start px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
                                     >
                                         View Users
                                     </Link>
@@ -115,6 +143,7 @@ export default function Users() {
                         ))}
                     </tbody>
                 </table>
+                {/* <UsersTable tableData={UsersData}/> */}
             </div>
             <div className='flex flex-row right-0  space-x-3 mt-5'>
                 <button className='bg-[#000005] border-1 border-[#9B9476] px-4 py-1 rounded-sm text-[#9B9476] cursor-pointer'>Previous</button>

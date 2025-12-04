@@ -1,0 +1,16 @@
+{
+  "tableName": "Item Sales Table",
+  "columns": [
+    { "header": "Item Name", "accessor": "itemName" },
+    { "header": "Type", "accessor": "type" },
+    { "header": "Price", "accessor": "price" },
+    { "header": "Units Sold", "accessor": "unitsSold" }
+  ],
+  "data": [
+    { "itemName": "Magic Wand", "type": "Accessory", "price": 150, "unitsSold": 1200 },
+    { "itemName": "Knight Armor", "type": "Equipment", "price": 800, "unitsSold": 450 },
+    { "itemName": "Health Potion", "type": "Consumable", "price": 50, "unitsSold": 3000 },
+    { "itemName": "Dragon Shield", "type": "Equipment", "price": 950, "unitsSold": 320 },
+    { "itemName": "Stealth Boots", "type": "Accessory", "price": 220, "unitsSold": 870 }
+  ]
+}

@@ -3,7 +3,8 @@ import { Search,BellDot } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis, Tooltip,  BarChart, Bar } from 'recharts';
 import gameItems from '../user/gameItems';
-
+import TableFormat from '../components/TableTemplate/TableFormat';
+import DemoData from '../user/DemoData.json'
 
 export default function Dashboard() {
     const data = [
@@ -15,20 +16,6 @@ export default function Dashboard() {
 ];
 
   return (
-    // <nav className='justify-between top-0 right-0 left-1/6 space-y-10 w-auto absolute'>
-    //   <div className='flex justify-between items-center bg-purple-500 px-5 pt-5 pb-20'>
-    //     <h1 className='text-3xl text-amber-50'>Dashboard Overview</h1>
-    //     <div className='flex justify-between items-center space-x-4'>
-    //       <div className='flex bg-[#39384d] items-center border-0 rounded-2xl px-8 py-2 space-x-3 text-amber-50 text-lg'>
-    //         <Search className='flex h-6 w-6'/>
-    //         <input type="search" placeholder='search for anything'/>
-    //      </div>
-    //      <div>
-    //         <button className=' bg-[#39384d] border-0 p-2 rounded-2xl cursor-pointer text-amber-50'><BellDot className='flex w-6 h-7'/></button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </nav>
     <div >
     {/* <Navbar/> */}
     
@@ -74,54 +61,24 @@ export default function Dashboard() {
             <h1 className='sm:text-sm md:text-sm lg:text-lg xl:text-xl 2xl:text-2xl justify-center items-center text-white mb-2'>Top Selling Items</h1>
             <h3 className='sm:text-xs md:text-xs lg-text-sm xl:text-sm justify-center items-center text-white'>Most popular items by sales</h3>
             <div className='items-center h-auto bg-[#020028] border-2 border-[#9B9476] rounded-lg mt-2'>
-                <table className='text-sm text-gray-400 px-2'>
-                    <thead className='justify-between'>
-                        <tr>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Item Name</th>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Type</th>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Price</th>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Units Sold</th>
-                            </tr>
-                    </thead>
+               
+                <TableFormat 
+                columns={DemoData.columns}
+                data={DemoData.data}
+                />
 
-                    <tbody>
-                        {gameItems.map((item) => (
-                        <tr key={item.id} className="border-gray-600 hover:bg-gray-700">
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.itemName}</td>
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.type}</td>
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.price}</td>
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.unitsSold}</td>
-                    </tr>
-                        ))}
-                    </tbody>
-                </table>
             </div>
         </div>
         <div className='items-center sm:h-32 md:h-40 lg:h-52 xl:h-65 2xl:h-78 bg-[#000005] border-2 border-[#9B9476] rounded-lg sm:p-1 md:p-1 lg:p-2 xl:p-2 2xl:p-3'>
             <h1 className='sm:text-sm md:text-sm lg:text-lg xl:text-xl 2xl:text-2xl justify-center items-center text-white mb-2'>Top Selling Items</h1>
             <h3 className='sm:text-xs md:text-xs lg-text-sm xl:text-sm justify-center items-center text-white'>Most popular items by sales</h3>
             <div className='items-center h-auto bg-[#020028] border-2 border-[#9B9476] rounded-lg mt-2'>
-                <table className='text-sm text-gray-400 px-2'>
-                    <thead className='justify-between'>
-                        <tr>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Item Name</th>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Type</th>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Price</th>
-                            <th className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5">Units Sold</th>
-                            </tr>
-                    </thead>
+        
+                <TableFormat 
+                columns={DemoData.columns}
+                data={DemoData.data}
+                />
 
-                    <tbody>
-                        {gameItems.map((item) => (
-                        <tr key={item.id} className="border-gray-600 hover:bg-gray-700">
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.itemName}</td>
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.type}</td>
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.price}</td>
-                        <td className="sm:px-3 sm:py-0.5 md:px-3.5 md:py-1 lg:px-5 lg:py-1 xl:px-6 xl:py-1 2xl:px-7 2xl:py-1.5 text-center">{item.unitsSold}</td>
-                    </tr>
-                        ))}
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
