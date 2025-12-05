@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import UsersTable from '../components/TableTemplate/TableFormat'
 import UsersData from '../user/UsersData.json'
-
+import FilterButton from '../components/ButtonComponent/FilterButton'
 
 export default function Users() {
     const [isBlocked, setIsBlocked] = useState({});
@@ -23,6 +23,18 @@ export default function Users() {
             ...prev, [id]: false,
         }))
     }
+
+    const userListFilter = [
+    { label: "Active", value: "Active" },
+    { label: "Inactive", value: "Inactive" }
+    ];
+
+    const actionFilter = [
+        {label: "Block", value: "Block"},
+        {label: "Unblock", value: "Unblock"},
+        {label: "View User", value: "View User"}
+    ]
+
     const highlightedClasses = " text-sm text-black bg-red-200 px-3";
     const defaultClasses = "text-sm text-amber-50 px-3"
 
@@ -36,44 +48,13 @@ export default function Users() {
                     <Search className='flex sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6 2xl:h-8 2xl:w-8'/>
                     <input type="search" placeholder='search users' className='text-white'/>
                 </div>
-                    <Menu as="div" className="relative inline-block">
-                        <MenuButton className="inline-flex w-full justify-center cursor-pointer gap-x-1.5 rounded-md bg-[#9B9476] sm:px-2 sm:py-1 md:px-2 md:py-1 lg:px-2.5 lg:py-1.5 xl:px-3 xl:py-2 2xl:px-4 2xl:py-2.4 sm:text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-lg font-semibold text-white inset-ring-1 inset-ring-white/5 hover:bg-white/20">
-                            Filter<FunnelPlus className='flex sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6 2xl:h-8 2xl:w-8'/>
-                            <ChevronDownIcon aria-hidden="true" className="-mr-1 sm:size-3 md:size:3 lg:size-4 xl:size-5 2xl:size-7 text-gray-400" />
-                        </MenuButton>
 
-                        <MenuItems
-                            transition
-                            className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-white/10 rounded-md bg-gray-800 outline-1 -outline-offset-1 outline-white/10 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-                        >
-                        <div className="py-1">
-                        <MenuItem>
-                        <Link
-                        to="#"
-                        className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                        >
-                        All
-                        </Link>
-                        </MenuItem>
-                        <MenuItem>
-                        <Link
-                            to="#"
-                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                        >
-                            Infinity
-                        </Link>
-                    </MenuItem>
-                    <MenuItem>
-                        <Link
-                            to="#"
-                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                        >
-                            Time
-                        </Link>
-                    </MenuItem>
-                </div>
-                </MenuItems>
-            </Menu>
+            <FilterButton
+            lable='Filter'
+            icon={<FunnelPlus className='flex sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6 2xl:h-8 2xl:w-8'/>}
+            items={userListFilter}
+            />
+
             </div>
             <div className='bg-[#000005] border-2 border-[#9B9476] rounded-2xl flex-1 overflow-auto p-3 mt-5 overflow-x-auto'>
                 <table className='text-sm text-amber-50 px-3'>
@@ -142,7 +123,7 @@ export default function Users() {
                         </tr>
                         ))}
                     </tbody>
-                </table>
+                </table> 
                 {/* <UsersTable tableData={UsersData}/> */}
             </div>
             <div className='flex flex-row right-0  space-x-3 mt-5'>

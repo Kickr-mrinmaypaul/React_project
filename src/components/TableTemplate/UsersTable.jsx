@@ -18,6 +18,9 @@ const  UsersTable = ({ tableData }) => {
 
     const highlightedClasses = " text-sm text-black bg-red-200 px-3";
     const defaultClasses = "text-sm text-amber-50 px-3";
+    const defaultCellClass =
+    "sm:px-3 sm:py-0.5 md:px-4 md:py-1 lg:px-7 lg:py-1 xl:px-11 xl:py-1 " +
+    "2xl:px-13 2xl:py-1.5 text-center sm:text-xs md:text-xs lg:text-sm xl:text-sm 2xl:text-2xl";
 
   return (
     <table className="text-sm text-amber-50 px-3 w-full">

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import GameHistory from '../components/GameHistory'
 import Transitions from '../components/Transitions'
 import PurchasedItems from '../components/PurchasedItems'
+import FilterButton from '../components/ButtonComponent/FilterButton'
 
 export default function ViewUsers() {
     const [activeComponent, setActiveComponents] = useState(null);
@@ -14,15 +15,47 @@ export default function ViewUsers() {
     const renderActiveComponent = () =>{
         switch(activeComponent){
             case 'A':
-                return <GameHistory/>;
+                return <GameHistory/>
             case 'B':
-                return <Transitions/>;    
+                return <Transitions/>    
             case 'C':
-                return <PurchasedItems/>;
+                return <PurchasedItems/>
             default:
                 return <GameHistory/>
         }
     }
+
+    const gameHistofyFilter = [
+    { label: "All", value: "all" },
+    { label: "Infinity", value: "infinity" },
+    { label: "Time", value: "time" }
+  ];
+     
+  const transactionFilter = [
+    { label: "All", value: "all" },
+    { label: "Coin", value: "Coin" },
+    { label: "Power Ups", value: "Power Ups" }
+  ];
+
+  const purchasedFilter = [
+    { label: "All", value: "all" },
+    { label: "Snake", value: "Snake" },
+    { label: "Background", value: "Background" },
+    { label: "Power-Ups", value: "Power-Ups" }
+  ];
+
+  const getFilterOptions = () =>{
+    switch(activeComponent){
+        case 'A':
+            return gameHistofyFilter;
+        case 'B':
+            return transactionFilter;
+        case 'C':
+            return purchasedFilter;
+        default :
+            return gameHistofyFilter;
+    }
+  };
 
   return (
     <div className='bg-[#020028] flx-1 overflow-auto absolute h-full w-auto sm:top-27 md:top-27 lg:top-31 xl:top-36 2xl:top-39 sm:left-30 md:left-40 lg:left-50 xl:left-64 right-0 border-2 border-l-[#1a656d]  sm:pl-8 sm:pr-5 sm:pt-4 md:pl-9 md:pr-6 md:pt-4 xl:pl-15 xl:pr-10 xl:pt-7 2xl:pl-18 2xl:pr-12 2xl:pt-8'>
@@ -84,45 +117,14 @@ export default function ViewUsers() {
                                 Purchased items
                             </button>
                         </div>
-                    <div>
-                            <Menu as="div" className="relative inline-block">
-                                <MenuButton className="inline-flex w-full justify-center cursor-pointer gap-x-1.5 rounded-md bg-[#9B9476] sm:px-2 sm:py-1 md:px-2 md:py-1 lg:px-2.5 lg:py-1.5 xl:px-3 xl:py-2 2xl:px-4 2xl:py-2.4 sm:text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-lg font-semibold text-white inset-ring-1 inset-ring-white/5 hover:bg-white/20">
-                                    Filter<FunnelPlus className='flex sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6 2xl:h-8 2xl:w-8'/>
-                                        <ChevronDownIcon aria-hidden="true" className="-mr-1 sm:size-3 md:size:3 lg:size-4 xl:size-5 2xl:size-7 text-gray-400" />
-                                </MenuButton>
+                        <div>
 
-                                <MenuItems
-                                    transition
-                                    className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-white/10 rounded-md bg-gray-800 outline-1 -outline-offset-1 outline-white/10 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-                                >
-                                <div className="py-1">
-                                    <MenuItem>
-                                        <Link
-                                            to="#"
-                                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                                        >
-                                             All
-                                        </Link>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <Link
-                                            to="#"
-                                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                                        >
-                                            Infinity
-                                        </Link>
-                                    </MenuItem>
-                                     <MenuItem>
-                                        <Link
-                                            to="#"
-                                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                                        >
-                                            Time
-                                        </Link>
-                                    </MenuItem>
-                                </div>
-                            </MenuItems>
-                        </Menu>
+                            <FilterButton
+                            lable='Filter'
+                            icon={<FunnelPlus className='flex sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6 2xl:h-8 2xl:w-8'/>}
+                            items={getFilterOptions()}
+                            />
+
                         </div>
                     </div>
                         {renderActiveComponent()}
