@@ -58,12 +58,12 @@ export default function ViewUsers() {
   };
 
   return (
-    <div className='bg-[#020028] flx-1 overflow-auto absolute h-full w-auto sm:top-27 md:top-27 lg:top-31 xl:top-36 2xl:top-39 sm:left-30 md:left-40 lg:left-50 xl:left-64 right-0 border-2 border-l-[#1a656d]  sm:pl-8 sm:pr-5 sm:pt-4 md:pl-9 md:pr-6 md:pt-4 xl:pl-15 xl:pr-10 xl:pt-7 2xl:pl-18 2xl:pr-12 2xl:pt-8'>
-        <div className='bg-[#000005] border-2 border-[#9B9476] rounded-2xl flex-1 overflow-auto sm:p-2 md:p-2 lg:p-2.5 xl:p-3 2xl:p-4'> 
+    <div className='bg-[#020028] flx-1 overflow-auto absolute h-full w-auto sm:top-27 md:top-27 lg:top-31 xl:top-36 2xl:top-39 sm:left-30 md:left-40 lg:left-50 xl:left-64 right-0 p-4 '>
+        <div className='bg-[linear-gradient(166deg,#000005_0%,#020028_19%,#00000000_100%)] bg-no-repeat bg-[padding-box] border-1 border-[#9B9476] rounded-2xl flex-1 overflow-auto p-3'> 
             <h1 className='sm:text-sm md:text-sm lg:text-lg xl:text-xl 2xl:text-2xl text-amber-50'>User List</h1>
             <h3 className='sm:text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-lg text-amber-50'>Detailed user information</h3>
-            <div className='grid grid-cols-2 flex-1 overflow-hidden mt-4'>
-                <div className='w-3/4 border-2 border-[#9B9476] m-3 rounded-2xl p-3'>
+            <div className='grid grid-cols-1 xl:grid-cols-2 flex-1 overflow-hidden mt-4'>
+                <div className='w-3/4 border-1 border-[#9B9476] bg-[linear-gradient(166deg,#000005_0%,#020028_19%,#00000000_100%)] bg-no-repeat bg-[padding-box] rounded-2xl p-2'>
                     <h1 className='text-xl text-amber-50'>User Information</h1>
                     <div className='flex flex-col justify-center items-center'>
                         <img src="https://media.licdn.com/dms/image/v2/C4D0BAQFzYHA4ygtkMg/company-logo_200_200/company-logo_200_200/0/1642661001136/kickr_technology_logo?e=2147483647&v=beta&t=qo533mSc55QOQv5CWwUDaViJ_nNB8PMkN48qw1-8tL4" 
@@ -89,7 +89,7 @@ export default function ViewUsers() {
                         </table>
                     </div>
                 </div>
-                <div className='w-auto flex-1 overflow-auto border-2 border-[#9B9476] m-3 rounded-2xl p-3'>
+                <div className='w-auto left-0 overflow-auto border-1 border-[#9B9476] bg-[linear-gradient(166deg,#000005_0%,#020028_19%,#00000000_100%)] bg-no-repeat bg-[padding-box] p-2 rounded-2xl'>
                     <h1 className='text-xl text-amber-50'>User Activity</h1>
                     <div className='flex flex-row justify-between'>
                         <div className="inline-flex rounded-md shadow -space-x-px pt-2" role="group">
@@ -117,7 +117,7 @@ export default function ViewUsers() {
                                 Purchased items
                             </button>
                         </div>
-                        <div>
+                        <div >
 
                             <FilterButton
                             lable='Filter'
@@ -127,7 +127,9 @@ export default function ViewUsers() {
 
                         </div>
                     </div>
-                        {renderActiveComponent()}
+                        <div>
+                            {renderActiveComponent()}
+                        </div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Search, FunnelPlus, EllipsisVertical  } from 'lucide-react'
@@ -9,6 +9,11 @@ export default function FilterButton({
     items = [],
     onSelect = () => {},}) 
     {
+      const [activeButton, setActiveButton] = useState(null);
+      const handleActiveButton = (item, index) =>{
+        setActiveButton(index);
+        onSelect(item);
+      }
   return (
 
     <Menu as="div" className="relative inline-block">
@@ -23,19 +28,18 @@ export default function FilterButton({
 
         <MenuItems
             ransition
-            className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-white/10
-            rounded-md bg-gray-800 outline outline-1 outline-white/10
+            className="absolute right-0 z-10 mt-1 w-[118px] origin-top-right 
+            rounded-xl bg-[#FFFFFF] outline outline-1 outline-white/10
             transition data-closed:scale-95 data-closed:opacity-0"
         >
-            <div className="py-1">
+            <div>
                 {items.map((item, index) => (
                 <MenuItem key={index}>
                 <button
-                    onClick={() => onSelect(item)}
-                    className="block w-full px-4 py-2 text-left text-sm text-gray-300
-                     data-focus:bg-white/5 data-focus:text-white"
+                    onClick={() => handleActiveButton(item, index)}
+                    className="flex flex-row items-center gap-1 cursor-pointer w-full px-3 py-2 text-left text-sm text-[#343434] font-semibold "
                 >
-                    {item.label}
+                  {<div className={`flex ustify-start box h-3 w-3 ${activeButton === index ? "bg-[#0FE3FD]":"bg-[#BFBFBF]"} border border-[#707070] rounded-full` }></div>}  {item.label}
                 </button>
         </MenuItem>
       ))}

@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
 import { Eye, EyeOff, Check } from 'lucide-react';
+import axios from 'axios';
 
 export default function AdminSettings() {
     const [showNewPassword, setNewShowPassword] = useState(false);
     const [showReEnterPassword, setShowReEnterPassword] = useState(false);
+    const [isVerified, setIsVerified] = useState(false);
 
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -18,19 +20,45 @@ export default function AdminSettings() {
             return;
         }
         try{
-            const Response = await fetch();
-            
+            const response = await axios.get('',{currentPassword});
+            if(response.data.sucess){
+                alert("Current Password Verified");
+                setIsVerified(true);
+            }else{
+                alert("Current Password Incorrect.");
+                isVerified(false);
+            }
         }catch(error){
-
+            console.log("Erron on verifying password.");
+            setIsVerified(false);
         }
         setCurrentPassword("");
     }
 
-    const handlepasswordSubmit = (e) =>{
+    const handlepasswordSubmit = async(e) =>{
         e.preventDefault();
+        if(!isVerified){
+            alert("Verify the Current Password");
+            return;
+        }
         if(newPassword !== reEnterPassword){
             alert("New Password and Confirm Password do not match!");
             return;
+        }
+        try {
+            const response = await axios.post('',{newPassword});
+            if(response.data.sucess){
+                alert("Password change Sucessfully.");
+                setIsVerified(false);
+                setNewPassword("");
+                setReEnterPassword("");
+            }else{
+                alert("Failed to Changing Password");
+            }
+            
+        } catch (error) {
+            console.error(error);
+            alert("Error changing Password");
         }
         setNewPassword("");
         setReEnterPassword("");
@@ -43,7 +71,7 @@ export default function AdminSettings() {
         setShowReEnterPassword(!showReEnterPassword);
     }
   return (
-        <div className='bg-[#020028] mt-2 border-2 border-[#9B9476] rounded-2xl sm:p-1.5 md:p-2 lg:p-1.5 xl:p-2 2xl:p-4 mb-5'>
+        <div className='bg-[#020028] mt-2 border-1 border-[#9B9476] rounded-2xl sm:p-1.5 md:p-2 lg:p-1.5 xl:p-2 2xl:p-4 mb-5'>
                 <h3 className='text-xl text-[#FFFFFF] font-semibold ml-2'>Settings & Controls</h3>
                 <div className='mt-3 ml-2 bg-[#9B94764D] p-3 rounded-md w-1/2 flex-1 overflow-hidden'>
                     <span className='text-lg text-[#45E9FD] font-semibold'>Change Password</span>

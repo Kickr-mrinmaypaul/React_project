@@ -3,7 +3,7 @@ import gameHistory from '../user/gameHistoryData'
 
 export default function PurchasedItems() {
   return (
-    <div className='border-2 border-[#9B9476] m-3 rounded-2xl p-3 h-auto overflow-hidden'>
+    <div className='border-1 border-[#9B9476] m-3 rounded-2xl p-3 h-auto overflow-hidden'>
             <table className='text-xs text-gray-400 '>
                 <thead>
                     <tr  className='space-x-0 text-xs'>

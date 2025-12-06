@@ -41,7 +41,7 @@ export default function AdminProfile() {
   };
 
   return (
-    <div className="bg-[#9B94764D] mt-2 border-2 border-[#9B9476] rounded-2xl h-auto p-4">
+    <div className="bg-[#9B94764D] mt-2 border-1 border-[#9B9476] rounded-2xl h-auto p-4">
       
       <div className="flex justify-between">
         <h1 className="text-[#E9E7E7] text-lg font-semibold">
